@@ -1,0 +1,18 @@
+---
+jenkins_version: "2.150.3"
+jenkins_caddy_server_name: jenkins-qa.westwing.eu
+
+# jenkins settings
+jenkins_opt_dir: "/opt/jenkins"
+jenkins_config_dir: "{{ jenkins_opt_dir }}/config"
+jenkins_tmp_dir: "{{ jenkins_opt_dir }}/tmp"
+jenkins_data_dir: "{{ jenkins_opt_dir }}/data"
+
+jenkins_xmx: "{{ ( ansible_memtotal_mb * 0.20 ) | round(0, 'ceil') | int }}"
+jenkins_user: jenkins
+jenkins_group: jenkins
+jenkins_hostname: localhost
+jenkins_agent_port: "50001"
+jenkins_plugins:
+  - git
+  - ssh
