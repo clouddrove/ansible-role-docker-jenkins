@@ -1,4 +1,6 @@
 ---
+
+# Jenkins variable
 jenkins_version: "2.150.3"
 jenkins_caddy_server_name: jenkins-qa.westwing.eu
 
@@ -16,3 +18,7 @@ jenkins_agent_port: "50001"
 jenkins_plugins:
   - git
   - ssh
+jenkins_url: "jenkins.local"
+
+# Nginx settings
+nginx_opt_dir: "/opt/nginx"

@@ -1,3 +1,5 @@
+---
+
 - name: copy service definition for Jenkins
   template:
     src: jenkins.service
@@ -14,24 +16,24 @@
     owner: root
     group: root
 
-- name: reload systemd
-  command: systemctl daemon-reload
-
 - name: start jenkins
   service:
     name: jenkins
     state: started
 
-- pause:
+- name: sleep
+  pause:
     seconds: 10
 
 - name: install jenkins plugins
   shell: docker exec jenkins /bin/bash -c '/usr/local/bin/install-plugins.sh <  /tmp/jenkins/plugins.txt'
   become: true
+  changed_when: true
 
 - name: setup jenkins plugins
   shell: docker exec jenkins /bin/bash -c 'mv /usr/share/jenkins/ref/plugins/*.jpi /var/jenkins_home/plugins/'
   become: true
+  changed_when: true
 
 - name: restart jenkins
   service:
