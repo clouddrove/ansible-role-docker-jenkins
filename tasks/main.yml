@@ -3,4 +3,3 @@
 - import_tasks: users.yml
 - import_tasks: configure.yml
 - import_tasks: install.yml
-- import_tasks: nginx.yml

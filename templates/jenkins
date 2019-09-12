@@ -3,7 +3,7 @@
 set -eux -o pipefail
 
 # pull the image before so we dont first remove the container and then pull
-docker pull jenkins/jenkins:lts-alpine
+docker pull jenkins/jenkins:{{ jenkins_version }}
 
 docker rm -f -v jenkins || :
 
@@ -13,4 +13,4 @@ docker run -u root --net=host --rm --name jenkins \
    -v "{{ jenkins_data_dir }}":/var/jenkins_home:rw \
    -v "{{ jenkins_config_dir }}":/root/config \
    -v "{{ jenkins_tmp_dir }}":/tmp/jenkins \
-     jenkins/jenkins:lts-alpine
+     jenkins/jenkins:{{ jenkins_version }}

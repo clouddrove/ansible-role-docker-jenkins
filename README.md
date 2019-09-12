@@ -96,12 +96,14 @@ Followiing things includes in this role:
 ## Variables
 
 ```yaml
-  jenkins_version: "2.150.3"
-  jenkins_caddy_server_name: jenkins-qa.westwing.eu
+  jenkins_version: "lts-alpine"
+  jenkins_caddy_server_name: jenkins.clouddrove.eu
   jenkins_opt_dir: "/opt/jenkins"
   jenkins_config_dir: "{{ jenkins_opt_dir }}/config"
   jenkins_tmp_dir: "{{ jenkins_opt_dir }}/tmp"
   jenkins_data_dir: "{{ jenkins_opt_dir }}/data"
+  jenkins_https_port: "443"
+  jenkins_http_port: "8080"
   jenkins_xmx: "{{ ( ansible_memtotal_mb * 0.20 ) | round(0, 'ceil') | int }}"
   jenkins_user: jenkins
   jenkins_group: jenkins
@@ -110,6 +112,8 @@ Followiing things includes in this role:
   jenkins_plugins:
     - git
     - ssh
+  cert_path: "/root/config/star-clouddrove.crt"
+  key_path: "/root/config/clouddrove-sub-domain-private-key.pem"
 ```
 
 
