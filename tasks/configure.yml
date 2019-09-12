@@ -1,0 +1,40 @@
+---
+
+- name: create jenkins dirs
+  file:
+    path: "{{ item|safe|trim }}"
+    state: directory
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_group }}"
+    mode: 0755
+    recurse: true
+  changed_when: false
+  with_items:
+    - "{{ jenkins_opt_dir }}"
+    - "{{ jenkins_config_dir }}"
+    - "{{ jenkins_tmp_dir }}"
+    - "{{ jenkins_data_dir }}"
+
+- name: create jenkins log file
+  template:
+    dest: "{{ jenkins_config_dir }}/log.properties"
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_group }}"
+    mode: 0644
+    src: log.properties
+
+- name: copy jenkins plugins file
+  template:
+    dest: "{{ jenkins_tmp_dir }}/plugins.txt"
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_group }}"
+    mode: 0644
+    src: plugins/plugins.txt
+
+- name: create jenkins caddy file
+  template:
+    dest: "{{ jenkins_config_dir }}/Caddyfile"
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: 0644
+    src: Caddyfile

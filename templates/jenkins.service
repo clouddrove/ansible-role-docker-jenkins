@@ -1,0 +1,13 @@
+[Unit]
+Description=Jenkins Server
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStart=/usr/local/bin/jenkins
+ExecStop=-/usr/bin/docker rm -f -v jenkins
+
+[Install]
+WantedBy=multi-user.target

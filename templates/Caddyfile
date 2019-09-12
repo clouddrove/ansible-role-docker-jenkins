@@ -1,0 +1,17 @@
+{{ jenkins_caddy_server_name }}:80 {
+    tls off;
+    redir https://{{ jenkins_caddy_server_name }}:{{ jenkins_https_port }}
+}
+
+{{ jenkins_caddy_server_name }}:{{ jenkins_https_port }} {
+
+  tls {{ cert_path }} {{ key_path }}
+
+  proxy / jenkins_service:{{ jenkins_http_port }} {
+    websocket
+    header_upstream Host {host}
+    header_upstream X-Real-IP {remote}
+    header_upstream X-Forwarded-For {remote}
+    header_upstream X-Forwarded-Proto {scheme}
+  }
+}

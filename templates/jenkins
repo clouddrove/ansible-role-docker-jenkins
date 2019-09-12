@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -eux -o pipefail
+
+# pull the image before so we dont first remove the container and then pull
+docker pull jenkins/jenkins:{{ jenkins_version }}
+
+docker rm -f -v jenkins || :
+
+docker run -u root --net=host --rm --name jenkins \
+  --env JAVA_OPTS="-Djava.util.logging.config.file=/var/config/jenkins/log.properties -Dhudson.model.DirectoryBrowserSupport.CSP= -Dorg.apache.commons.jelly.tags.fmt.timeZone=Europe/Berlin -Duser.timezone=Europe/Berlin -Xmx{{ jenkins_xmx }}m "  \
+  --env JENKINS_SLAVE_AGENT_PORT="{{ jenkins_agent_port }}" \
+   -v "{{ jenkins_data_dir }}":/var/jenkins_home:rw \
+   -v "{{ jenkins_config_dir }}":/root/config \
+   -v "{{ jenkins_tmp_dir }}":/tmp/jenkins \
+     jenkins/jenkins:{{ jenkins_version }}
