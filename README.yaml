@@ -46,7 +46,6 @@ prerequesties:
 # What Includes to display
 what_includes:
   - name: "jenkins"
-  - name: "docker"
 
 
 #  description of this project
@@ -57,7 +56,7 @@ description: |-
 usage: |-
   ```yaml
   - hosts: localhost
-    remote_user: ubuntu
+    remote_user: root
     become: true
     roles:
       - clouddrove.ansible_role_docker_jenkins

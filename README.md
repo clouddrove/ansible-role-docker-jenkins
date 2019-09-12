@@ -71,8 +71,6 @@ This module has a few dependencies:
 Followiing things includes in this role:
 
 - jenkins
-- docker
-
 
 
 
