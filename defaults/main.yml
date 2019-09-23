@@ -2,7 +2,7 @@
 
 # Jenkins variable
 jenkins_version: "lts-alpine"
-jenkins_caddy_server_name: jenkins.clouddrove.eu
+jenkins_caddy_server_name: jenkins.clouddrove.com
 
 # jenkins settings
 jenkins_opt_dir: "/opt/jenkins"
@@ -21,6 +21,7 @@ jenkins_plugins:
   - git
   - ssh
 
-# ssl settings
-cert_path: "/root/config/star-clouddrove.crt"
-key_path: "/root/config/clouddrove-sub-domain-private-key.pem"
+# Caddy settings
+caddy: true
+cert_path: "/root/config"
+key_path: "/root/config"

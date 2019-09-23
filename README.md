@@ -61,7 +61,7 @@ This module has a few dependencies:
 - [Ansible2.8](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 - [Python](https://www.python.org/downloads)
 - [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu)
-- [Docker Nginx](https://github.com/clouddrove/ansible-role-docker-nginx)
+- [Docker Caddy](https://github.com/clouddrove/ansible-role-docker-caddy)
 
 
 
@@ -96,7 +96,7 @@ Followiing things includes in this role:
 
 ```yaml
   jenkins_version: "lts-alpine"
-  jenkins_caddy_server_name: jenkins.clouddrove.eu
+  jenkins_caddy_server_name: jenkins.clouddrove.com
   jenkins_opt_dir: "/opt/jenkins"
   jenkins_config_dir: "{{ jenkins_opt_dir }}/config"
   jenkins_tmp_dir: "{{ jenkins_opt_dir }}/tmp"

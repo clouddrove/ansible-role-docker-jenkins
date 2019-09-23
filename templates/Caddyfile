@@ -5,9 +5,9 @@
 
 {{ jenkins_caddy_server_name }}:{{ jenkins_https_port }} {
 
-  tls {{ cert_path }} {{ key_path }}
+  tls self_signed
 
-  proxy / jenkins_service:{{ jenkins_http_port }} {
+  proxy / localhost:{{ jenkins_http_port }} {
     websocket
     header_upstream Host {host}
     header_upstream X-Real-IP {remote}

@@ -38,3 +38,4 @@
     group: "{{ jenkins_user }}"
     mode: 0644
     src: Caddyfile
+  when: caddy

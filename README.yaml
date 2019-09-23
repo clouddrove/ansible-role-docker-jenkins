@@ -40,8 +40,8 @@ prerequesties:
     url: "https://www.python.org/downloads"
   - name: "Docker"
     url: "https://docs.docker.com/install/linux/docker-ce/ubuntu"
-  - name: "Docker Nginx"
-    url: "https://github.com/clouddrove/ansible-role-docker-nginx"
+  - name: "Docker Caddy"
+    url: "https://github.com/clouddrove/ansible-role-docker-caddy"
 # yamllint enable
 # What Includes to display
 what_includes:
@@ -65,7 +65,7 @@ usage: |-
 variables: |-
   ```yaml
     jenkins_version: "lts-alpine"
-    jenkins_caddy_server_name: jenkins.clouddrove.eu
+    jenkins_caddy_server_name: jenkins.clouddrove.com
     jenkins_opt_dir: "/opt/jenkins"
     jenkins_config_dir: "{{ jenkins_opt_dir }}/config"
     jenkins_tmp_dir: "{{ jenkins_opt_dir }}/tmp"
