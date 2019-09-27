@@ -13,4 +13,5 @@ docker run -u root --net=host --rm --name jenkins \
    -v "{{ jenkins_data_dir }}":/var/jenkins_home:rw \
    -v "{{ jenkins_config_dir }}":/root/config \
    -v "{{ jenkins_tmp_dir }}":/tmp/jenkins \
+   -v /var/run/docker.sock:/var/run/docker.sock \
      jenkins/jenkins:{{ jenkins_version }}
