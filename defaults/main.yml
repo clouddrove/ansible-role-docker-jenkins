@@ -25,3 +25,6 @@ jenkins_plugins:
 caddy: true
 cert_path: "/root/config"
 key_path: "/root/config"
+
+# node version
+java_packages: openjdk-11-jdk
