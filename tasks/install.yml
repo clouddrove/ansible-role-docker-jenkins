@@ -29,6 +29,7 @@
 - name: install jenkins plugins
   shell: docker exec jenkins /bin/bash -c '/usr/local/bin/install-plugins.sh <  /tmp/jenkins/plugins.txt'
   changed_when: true
+  ignore_errors: yes
 
 - name: setup jenkins plugins
   shell: docker exec jenkins /bin/bash -c 'mv /usr/share/jenkins/ref/plugins/*.jpi /var/jenkins_home/plugins/'

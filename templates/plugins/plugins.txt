@@ -1,4 +1,4 @@
-build-blocker-plugin:latest
+
 build-monitor-plugin:latest
 greenballs:latest
 htmlpublisher:latest
@@ -24,15 +24,13 @@ slave-utilization-plugin:latest
 ssh-agent:latest
 summary_report:latest
 systemloadaverage-monitor:latest
-test-results-analyzer:latest
 text-finder-run-condition:latest
 text-finder:latest
 build-user-vars-plugin:latest
 ws-cleanup:latest
-xunit:1.102
+xunit:2.3.9
 ansicolor:latest
 configuration-as-code:latest
-configuration-as-code-support:latest
 aws-global-configuration:latest
 saml:latest
 disk-usage:latest
