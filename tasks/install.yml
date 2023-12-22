@@ -27,11 +27,7 @@
     seconds: 10
 
 - name: install jenkins plugins
-  shell: docker exec jenkins /bin/bash -c '/usr/local/bin/install-plugins.sh <  /tmp/jenkins/plugins.txt'
-  changed_when: true
-
-- name: setup jenkins plugins
-  shell: docker exec jenkins /bin/bash -c 'mv /usr/share/jenkins/ref/plugins/*.jpi /var/jenkins_home/plugins/'
+  shell: docker exec jenkins /bin/bash -c 'java -jar /opt/jenkins-plugin-manager.jar --war /usr/share/jenkins/jenkins.war --plugin-file /tmp/jenkins/plugins.txt -d /var/jenkins_home/plugins/'
   changed_when: true
 
 - name: restart jenkins
