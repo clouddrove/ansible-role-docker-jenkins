@@ -12,7 +12,7 @@ jenkins_data_dir: "{{ jenkins_opt_dir }}/data"
 
 jenkins_https_port: "443"
 jenkins_http_port: "8080"
-jenkins_xmx: "{{ ( ansible_memtotal_mb * 0.20 ) | round(0, 'ceil') | int }}"
+jenkins_xmx: "{{ (ansible_memtotal_mb * 0.20) | round(0, 'ceil') | int }}"
 jenkins_user: jenkins
 jenkins_group: jenkins
 jenkins_hostname: localhost

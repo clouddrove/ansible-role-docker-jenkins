@@ -1,45 +1,47 @@
 ---
 
-- name: copy service definition for Jenkins
-  template:
+- name: Copy service definition for Jenkins
+  ansible.builtin.template:
     src: jenkins.service
     dest: "/etc/systemd/system/jenkins.service"
     mode: 0644
     owner: root
     group: root
 
-- name: copy executable for Jenkins
-  template:
+- name: Copy executable for Jenkins
+  ansible.builtin.template:
     src: jenkins
     dest: "/usr/local/bin/jenkins"
     mode: 0755
     owner: root
     group: root
 
-- name: start jenkins
-  service:
-    name: jenkins
+- name: Start jenkins
+  ansible.builtin.service:
+    name: Jenkins
     state: started
     enabled: true
 
-- name: sleep
-  pause:
+- name: Sleep
+  ansible.builtin.pause:
     seconds: 10
 
-- name: install jenkins plugins
-  shell: docker exec jenkins /bin/bash -c '/usr/local/bin/install-plugins.sh <  /tmp/jenkins/plugins.txt'
+- name: Install jenkins plugins
+  ansible.builtin.shell:
+    cmd: docker exec jenkins /bin/bash -c '/usr/local/bin/install-plugins.sh <  /tmp/jenkins/plugins.txt'
   changed_when: true
 
-- name: setup jenkins plugins
-  shell: docker exec jenkins /bin/bash -c 'mv /usr/share/jenkins/ref/plugins/*.jpi /var/jenkins_home/plugins/'
+- name: Setup jenkins plugins
+  ansible.builtin.shell:
+    cmd: docker exec jenkins /bin/bash -c 'mv /usr/share/jenkins/ref/plugins/*.jpi /var/jenkins_home/plugins/'
   changed_when: true
 
-- name: restart jenkins
-  service:
-    name: jenkins
+- name: Restart jenkins
+  ansible.builtin.service:
+    name: Jenkins
     state: restarted
 
 - name: Ensure Java is installed.
-  apt:
+  ansible.builtin.apt:
     name: "{{ java_packages }}"
     state: present

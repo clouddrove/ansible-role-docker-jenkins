@@ -1,13 +1,13 @@
 ---
 
-- name: restart jenkins
-  service:
+- name: Restart jenkins
+  ansible.builtin.service:
     name: "jenkins.service"
     state: restarted
     enabled: true
 
 - name: Restart Nginx
-  service:
+  ansible.builtin.service:
     name: "nginx.service"
     state: restarted
     enabled: true
